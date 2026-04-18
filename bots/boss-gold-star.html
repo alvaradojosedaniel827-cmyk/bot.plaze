@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== SEO Primary ===== -->
+  <title>Boss Gold Star — Bot bidireccional XAUUSD para MT4 | BOT.PLAZE</title>
+  <meta name="description" content="Boss Gold Star: bot de trading automatizado para oro (XAUUSD) en MetaTrader 4. Grid bidireccional BUY+SELL, capital mínimo $3,000. Prueba 7 días gratis sin compromiso." />
+  <meta name="keywords" content="boss gold star, bot trading bidireccional, expert advisor mt4, trading automatizado oro, grid trading, metatrader 4, botplaze" />
+  <meta name="author" content="BOT.PLAZE" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0A0E17" />
+  <link rel="canonical" href="https://botplaze.com/bots/boss-gold-star.html" />
+
+  <!-- ===== Favicon ===== -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/images/favicon-192.png">
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+
+  <!-- ===== Open Graph ===== -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://botplaze.com/bots/boss-gold-star.html" />
+  <meta property="og:title"       content="Boss Gold Star — Bot bidireccional XAUUSD | BOT.PLAZE" />
+  <meta property="og:description" content="Grid automático bidireccional en oro. Capital mínimo $3,000. Retorno estimado 20–100% / mes. Prueba 7 días gratis." />
+  <meta property="og:image"       content="https://botplaze.com/assets/images/robot-star-page.png.png" />
+  <meta property="og:locale"      content="es_ES" />
+  <meta property="og:site_name"   content="BOT.PLAZE" />
+
+  <!-- ===== Twitter Card ===== -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Boss Gold Star — BOT.PLAZE" />
+  <meta name="twitter:description" content="Bot bidireccional para XAUUSD en MT4. Prueba 7 días gratis." />
+  <meta name="twitter:image"       content="https://botplaze.com/assets/images/robot-star-page.png.png" />
+
+  <!-- ===== Schema JSON-LD ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Boss Gold Star",
+    "description": "Bot de trading automatizado bidireccional para XAUUSD en MetaTrader 4. Grid automático sin límite que opera BUY y SELL para capturar movimientos en ambas direcciones del mercado del oro.",
+    "brand": { "@type": "Brand", "name": "BOT.PLAZE" },
+    "url": "https://botplaze.com/bots/boss-gold-star.html",
+    "category": "Software de trading automatizado"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@1,400;1,600;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.min.css" />
+</head>
+<body>
+
+  <!-- CAMBIO 5: Barra de progreso de scroll -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ======================== NAVBAR ======================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="/" class="logo">
+        <svg class="logo-bot" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+          <rect x="25" y="38" width="70" height="55" rx="10" fill="#C9A961"/>
+          <circle cx="47" cy="60" r="5" fill="#0A0E17"/>
+          <circle cx="73" cy="60" r="5" fill="#0A0E17"/>
+          <path d="M 48 74 Q 60 84 72 74" fill="none" stroke="#0A0E17" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="60" y1="38" x2="60" y2="22" stroke="#C9A961" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="60" cy="17" r="4.5" fill="#C9A961"/>
+        </svg>
+        <span class="logo-text">BOT<span class="logo-gold">.</span>PLAZE</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#descripcion">Cómo funciona</a></li>
+        <li><a href="/#bots">Bots</a></li>
+        <li><a href="/#comparativa">Comparativa</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li class="nav-action-group">
+          <a href="https://wa.me/593998950621?text=Hola%2C%20necesito%20soporte%20t%C3%A9cnico%20con%20BOT.PLAZE"
+             class="nav-support" target="_blank" rel="noopener">Soporte técnico</a>
+          <button class="btn btn-gold nav-cta demo-open-btn" aria-haspopup="dialog">Prueba gratis</button>
+        </li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======================== HERO ======================== -->
+  <section class="hero bot-hero" id="hero">
+    <div class="container">
+      <nav class="bot-hero-breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a><span aria-hidden="true"> / </span><a href="/#bots">Bots</a><span aria-hidden="true"> / </span>Boss Gold Star
+      </nav>
+      <div class="bot-hero-badge bot-hero-badge--popular">MÁS POPULAR</div>
+      <h1>Boss Gold <em>Star</em></h1>
+      <p class="bot-hero-subtitle">La herramienta de los traders que buscan maximizar su potencial. Grid automático bidireccional en oro, sin límite de grilla, en MetaTrader 4.</p>
+      <div class="bot-hero-stats">
+        <div class="bot-hero-stat">
+          <span class="bot-hero-stat-value">$3,000</span>
+          <span class="bot-hero-stat-label">Capital mínimo</span>
+        </div>
+        <div class="bot-hero-stat">
+          <span class="bot-hero-stat-value">20–100%</span>
+          <span class="bot-hero-stat-label">Retorno / mes</span>
+        </div>
+        <div class="bot-hero-stat">
+          <span class="bot-hero-stat-value">↕ Grid</span>
+          <span class="bot-hero-stat-label">Bidireccional</span>
+        </div>
+        <div class="bot-hero-stat">
+          <span class="bot-hero-stat-value">MT4</span>
+          <span class="bot-hero-stat-label">Plataforma</span>
+        </div>
+      </div>
+      <div class="bot-hero-btns">
+        <button class="btn btn-gold btn-xl demo-open-btn" data-preselect-bot="star" aria-haspopup="dialog">Probar 7 días gratis</button>
+        <a href="https://wa.me/593998950621?text=Hola%2C%20me%20interesa%20Boss%20Gold%20Star.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F"
+           class="btn btn-gold-outline btn-xl" target="_blank" rel="noopener">Hablar con un asesor</a>
+      </div>
+      <div class="bot-hero-robot" aria-hidden="true">
+        <img src="../assets/images/robot-star-page.png.png"
+             alt="BOSS Robot - Boss Gold Star"
+             class="bot-hero-robot-img"
+             loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CÓMO FUNCIONA ======================== -->
+  <section class="section" id="como-funciona" style="background: var(--bg-card); border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Estrategia</span>
+        <h2>Cómo opera Boss Gold Star</h2>
+        <p>Un grid automático que trabaja en ambas direcciones del mercado, capturando oportunidades alcistas y bajistas sin que tengas que decidir nada.</p>
+      </div>
+      <div class="bp-steps">
+        <div class="bp-step reveal">
+          <span class="bp-step-num">1</span>
+          <h3>Lee el mercado en ambas direcciones</h3>
+          <p>Los mismos cuatro indicadores (EMA, RSI, MACD, ADX) analizan el mercado en M15 para identificar tanto impulsos alcistas como bajistas en XAUUSD.</p>
+        </div>
+        <div class="bp-step reveal reveal-delay-1">
+          <span class="bp-step-num">2</span>
+          <h3>Despliega el grid automático</h3>
+          <p>Abre posiciones BUY y SELL de forma simultánea en grilla, sin límite de niveles. El grid se adapta a la volatilidad del oro en tiempo real.</p>
+        </div>
+        <div class="bp-step reveal reveal-delay-2">
+          <span class="bp-step-num">3</span>
+          <h3>Maximiza las ganancias</h3>
+          <p>Cierra posiciones ganadores de forma escalonada mientras mantiene abiertas las que siguen el movimiento, maximizando el retorno por cada ciclo del mercado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== FICHA TÉCNICA ======================== -->
+  <section class="section" id="ficha" style="background: var(--bg); border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Ficha técnica</span>
+        <h2>Especificaciones del bot</h2>
+        <p>Todo lo que necesitas saber antes de activar tu prueba gratuita.</p>
+      </div>
+      <div class="bp-specs-grid">
+        <!-- Parámetros operativos -->
+        <div class="specs-card specs-card-star reveal">
+          <div class="specs-title">PARÁMETROS OPERATIVOS</div>
+          <div class="specs-grid">
+            <div class="spec-row">
+              <span class="spec-key">Activo</span>
+              <span class="spec-val highlight">XAUUSD (Oro)</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Plataforma</span>
+              <span class="spec-val">MetaTrader 4 (MT4)</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Temporalidad</span>
+              <span class="spec-val">M15 (15 minutos)</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Dirección</span>
+              <span class="spec-val mode-star">BUY + SELL ↕</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Estrategia</span>
+              <span class="spec-val">Grid automático sin límite</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Indicadores</span>
+              <span class="spec-val">EMA, RSI, MACD, ADX</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Stop-loss</span>
+              <span class="spec-val highlight">Automático integrado</span>
+            </div>
+          </div>
+        </div>
+        <!-- Capital y rendimiento -->
+        <div class="specs-card specs-card-star reveal reveal-delay-1">
+          <div class="specs-title">CAPITAL Y RENDIMIENTO</div>
+          <div class="specs-grid">
+            <div class="spec-row">
+              <span class="spec-key">Capital mínimo</span>
+              <span class="spec-val gold-text">$3,000 USD</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Capital ideal</span>
+              <span class="spec-val">$5,000 – $10,000+</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Retorno estimado</span>
+              <span class="spec-val gold-text">20% – 100% / mes</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Perfil de riesgo</span>
+              <span class="spec-val" style="color: #f87171;">Agresivo</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Brokers compatibles</span>
+              <span class="spec-val">Cualquier broker MT4</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Tipo de cuenta</span>
+              <span class="spec-val">Real o demo</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">VPS recomendada</span>
+              <span class="spec-val">Sí (24/7, obligatorio)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== QUÉ INCLUYE ======================== -->
+  <section class="section" id="incluye" style="background: var(--bg-card); border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Incluido</span>
+        <h2>Todo lo que obtienes</h2>
+        <p>Boss Gold Star incluye todo lo del Buy, más herramientas avanzadas para traders con mayor capital y experiencia.</p>
+      </div>
+      <ul class="bp-features-list">
+        <li>Archivo .ex4 listo para instalar en MT4</li>
+        <li>Grid automático bidireccional sin límite</li>
+        <li>Guía de instalación y configuración avanzada</li>
+        <li>Parámetros personalizados por nivel de capital</li>
+        <li>Soporte prioritario por WhatsApp (Diego, directo)</li>
+        <li>Actualizaciones del bot sin costo adicional</li>
+        <li>Acceso a comunidad privada de traders BOT.PLAZE</li>
+        <li>Asesoría para elección de broker y VPS dedicada</li>
+        <li>Cuenta demo para prueba de 7 días sin riesgo</li>
+        <li>Acompañamiento en los primeros 30 días de operación</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================== REQUISITOS ======================== -->
+  <section class="section" id="requisitos" style="background: var(--bg); border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Requisitos</span>
+        <h2>Lo que necesitas para empezar</h2>
+        <p>Boss Gold Star requiere mayor capital y se recomienda experiencia previa en trading. El equipo te acompaña en cada paso.</p>
+      </div>
+      <ul class="bp-features-list" style="max-width: 600px;">
+        <li>MetaTrader 4 instalado (cualquier broker)</li>
+        <li>Par XAUUSD habilitado en tu broker</li>
+        <li>Capital mínimo de $3,000 USD en cuenta real</li>
+        <li>VPS activa 24/7 (obligatorio para grid)</li>
+        <li>Experiencia básica o intermedia en trading</li>
+        <li>Windows 7 o superior (para MT4)</li>
+      </ul>
+      <div class="bp-risk-box">
+        <p>
+          <strong>&#9888; Aviso de riesgo:</strong> Boss Gold Star utiliza una estrategia de grid agresiva que puede generar pérdidas mayores que Boss Gold Buy. El trading en mercados financieros implica un riesgo significativo de pérdida de capital. Los rendimientos estimados son históricos y no garantizan resultados futuros. BOT<span class="brand-dot">.</span>PLAZE no es un asesor financiero registrado. Opera únicamente con capital que puedas permitirte perder.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CTA FINAL ======================== -->
+  <section class="footer-cta section" id="cta" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="section-tag">Empieza hoy</span>
+        <h2>Prueba Boss Gold Star 7 días gratis</h2>
+        <p>Sin tarjeta de crédito. Sin compromiso. Sin permanencia. Activa tu demo y comprueba el potencial del grid automático.</p>
+        <div class="cta-btns">
+          <button class="btn btn-gold btn-xl demo-open-btn" data-preselect-bot="star" aria-haspopup="dialog">Activar prueba gratuita</button>
+          <a href="https://wa.me/593998950621?text=Hola%2C%20me%20interesa%20Boss%20Gold%20Star.%20%C2%BFMe%20pueden%20ayudar%3F"
+             class="btn btn-gold-outline btn-xl" target="_blank" rel="noopener">Habla con un asesor</a>
+        </div>
+        <p class="cta-disclaimer">
+          &#9888; <strong>Aviso de riesgo:</strong> El trading implica riesgo de pérdida de capital. Los rendimientos pasados no garantizan resultados futuros. BOT<span class="brand-dot">.</span>PLAZE no es un asesor financiero registrado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          <svg class="logo-bot" width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+            <rect x="25" y="38" width="70" height="55" rx="10" fill="#C9A961"/>
+            <circle cx="47" cy="60" r="5" fill="#0A0E17"/>
+            <circle cx="73" cy="60" r="5" fill="#0A0E17"/>
+            <path d="M 48 74 Q 60 84 72 74" fill="none" stroke="#0A0E17" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="60" y1="38" x2="60" y2="22" stroke="#C9A961" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="60" cy="17" r="4.5" fill="#C9A961"/>
+          </svg>
+          <span class="logo-text">BOT<span class="logo-gold">.</span>PLAZE</span>
+        </a>
+        <p>Trading automatizado, premium y accesible. Marketplace de Expert Advisors para MetaTrader 4.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Producto</h4>
+          <a href="/#descripcion">Cómo funciona</a>
+          <a href="/bots/boss-gold-buy.html">Boss Gold Buy</a>
+          <a href="/bots/boss-gold-star.html">Boss Gold Star</a>
+          <a href="/#comparativa">Comparativa</a>
+          <button class="footer-demo-link demo-open-btn" aria-haspopup="dialog">Prueba gratis</button>
+        </div>
+        <div class="footer-col">
+          <h4>Información</h4>
+          <a href="/#ventajas">Ventajas</a>
+          <a href="/#incluye">Qué incluye</a>
+          <a href="/#requisitos">Requisitos</a>
+          <a href="/#faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/593998950621?text=Hola%2C%20estoy%20en%20botplaze.com%20y%20quiero%20hacer%20una%20consulta%20sobre%20los%20bots"
+             target="_blank" rel="noopener">Hablar con ventas</a>
+          <a href="https://wa.me/593998950621?text=Hola%2C%20necesito%20soporte%20t%C3%A9cnico%20con%20BOT.PLAZE"
+             target="_blank" rel="noopener">Soporte técnico</a>
+          <span class="footer-email">contacto@botplaze.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BOT<span class="brand-dot">.</span>PLAZE. Todos los derechos reservados. &nbsp;·&nbsp; El trading implica riesgo de pérdida de capital.</p>
+    </div>
+  </footer>
+
+  <!-- ======================== WHATSAPP FLOTANTE ======================== -->
+  <a href="https://wa.me/593998950621?text=Hola%2C%20estoy%20viendo%20Boss%20Gold%20Star%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n"
+     class="wa-float"
+     id="waFloat"
+     target="_blank"
+     rel="noopener"
+     aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.556 4.112 1.518 5.839L.057 23.4l5.735-1.503A11.926 11.926 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.88 0-3.63-.494-5.143-1.354l-.368-.22-3.402.892.908-3.312-.24-.38A9.943 9.943 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+    <span class="wa-float-tooltip">Habla con alguien real</span>
+  </a>
+
+  <!-- ======================== STICKY CTA BAR (mobile) ======================== -->
+  <div class="sticky-bar" id="stickyBar" role="complementary" aria-label="Contacto rápido">
+    <span class="sticky-bar-text">Prueba Boss Gold Star 7 días</span>
+    <button class="btn btn-gold demo-open-btn" data-preselect-bot="star" aria-haspopup="dialog">Empezar</button>
+    <button class="sticky-bar-close" id="stickyBarClose" aria-label="Cerrar barra de contacto">&times;</button>
+  </div>
+
+  <!-- ======================== MODAL DEMO ======================== -->
+  <div class="modal-overlay" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="demoModalClose" aria-label="Cerrar modal">&times;</button>
+      <div class="modal-header">
+        <h3 id="modalTitle">Tu demo gratis te espera</h3>
+        <p class="modal-subtitle">Completa el formulario y activamos tu prueba de 7 días sin costo</p>
+      </div>
+      <form id="demoForm" novalidate>
+        <div class="form-field">
+          <label for="fieldName">Nombre completo</label>
+          <input type="text" id="fieldName" name="name" placeholder="Tu nombre" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="fieldEmail">Correo electrónico</label>
+          <input type="email" id="fieldEmail" name="email" placeholder="tuemail@ejemplo.com" required autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="fieldWhatsapp">WhatsApp (con código de país)</label>
+          <input type="tel" id="fieldWhatsapp" name="whatsapp" placeholder="+593 999 888 777" required autocomplete="tel">
+        </div>
+        <div class="form-field">
+          <label>¿Qué bot quieres probar?</label>
+          <div class="form-bot-selector">
+
+            <label class="form-bot-option" data-value="buy">
+              <input type="radio" name="bot_interest" value="buy" class="form-bot-radio" hidden>
+              <div class="form-bot-option-inner">
+                <div class="form-bot-option-header">
+                  <span class="form-bot-option-name">Boss Gold Buy</span>
+                  <span class="form-bot-option-badge">DESDE $500</span>
+                </div>
+                <p class="form-bot-option-desc">Opera solo en compra. Ideal para empezar con menor riesgo.</p>
+              </div>
+            </label>
+
+            <label class="form-bot-option" data-value="star">
+              <input type="radio" name="bot_interest" value="star" class="form-bot-radio" hidden>
+              <div class="form-bot-option-inner">
+                <div class="form-bot-option-header">
+                  <span class="form-bot-option-name">Boss Gold Star</span>
+                  <span class="form-bot-option-badge form-bot-option-badge--popular">MÁS POPULAR</span>
+                </div>
+                <p class="form-bot-option-desc">Opera compra y venta con grid automático. Mayor potencial.</p>
+              </div>
+            </label>
+
+          </div>
+          <p class="form-bot-hint">¿No sabes cuál elegir? No te preocupes, te asesoramos después.</p>
+        </div>
+        <button type="submit" class="btn btn-gold btn-lg form-submit">Activar mi demo gratis</button>
+      </form>
+      <p class="modal-disclaimer">100% seguro &nbsp;·&nbsp; Sin spam &nbsp;·&nbsp; Tus datos están protegidos</p>
+    </div>
+  </div>
+
+  <script src="../js/main.min.js"></script>
+</body>
+</html>

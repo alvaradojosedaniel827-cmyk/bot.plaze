@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command ' *)",
+      "Bash(powershell *)",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c ' *)",
+      "Bash(node -e ' *)",
+      "Bash(node *)",
+      "Bash(npx --yes uglify-js js/main.js -o js/main.min.js --compress --mangle)",
+      "Bash(python -m http.server 8000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000)",
+      "Bash(python3 -m http.server 8000)",
+      "Bash(npx serve *)",
+      "Bash(npx uglify-js *)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}
