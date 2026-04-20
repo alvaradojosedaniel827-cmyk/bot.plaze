@@ -32,9 +32,8 @@ exports.handler = async function(event, context) {
       body: JSON.stringify({
         email: email,
         fields: [
-          { slug: 'first_name', value: name || '' },
-          { slug: 'phone_number', value: whatsapp || '' },
-          { slug: 'last_name', value: bot_interest === 'buy' ? 'BOSS-BUY' : bot_interest === 'star' ? 'BOSS-STAR' : 'SIN-SELECCION' }
+          { slug: 'first_name', value: (name || '') + ' [' + (bot_interest === 'buy' ? 'BUY' : bot_interest === 'star' ? 'STAR' : 'N/A') + ']' },
+          { slug: 'phone_number', value: whatsapp || '' }
         ],
         tags: [
           { tagId: 1968751 }
