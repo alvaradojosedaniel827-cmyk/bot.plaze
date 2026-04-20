@@ -583,7 +583,7 @@ navLinks.querySelectorAll('a').forEach(link => {
     submitBtn.classList.add('is-loading');
     submitBtn.textContent = 'Enviando...';
 
-    fetch('/.netlify/functions/submit-lead', {
+    fetch('/api/submit-lead', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

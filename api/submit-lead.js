@@ -11,35 +11,33 @@ const ACCOUNTS = {
   }
 };
 
-exports.handler = async function(event, context) {
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Content-Type' },
-      body: ''
-    };
+module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Content-Type', 'application/json');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
   }
 
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
   }
-
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json'
-  };
 
   try {
-    const data = JSON.parse(event.body);
-    const { name, email, whatsapp, bot_interest } = data;
+    var data = req.body;
+    var name = data.name;
+    var email = data.email;
+    var whatsapp = data.whatsapp;
+    var bot_interest = data.bot_interest;
 
     if (!email) {
-      return { statusCode: 400, headers, body: JSON.stringify({ error: 'Email requerido' }) };
+      return res.status(400).json({ error: 'Email requerido' });
     }
 
     var account = ACCOUNTS[bot_interest] || ACCOUNTS.buy;
 
-    console.log('Enviando lead a Systeme.io:', email, 'Bot:', bot_interest, 'Account:', bot_interest || 'buy');
+    console.log('Enviando lead a Systeme.io:', email, 'Bot:', bot_interest);
 
     var response = await fetch('https://api.systeme.io/api/contacts', {
       method: 'POST',
@@ -63,26 +61,14 @@ exports.handler = async function(event, context) {
     console.log('Systeme.io response:', response.status, responseText);
 
     if (response.status === 201 || response.status === 409 || response.status === 200) {
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({ success: true, bot: bot_interest })
-      };
+      return res.status(200).json({ success: true, bot: bot_interest });
     } else {
       console.error('Error Systeme.io:', response.status, responseText);
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({ success: false, error: responseText })
-      };
+      return res.status(200).json({ success: false, error: responseText });
     }
 
   } catch (error) {
     console.error('Error en función:', error);
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({ success: false, error: error.message })
-    };
+    return res.status(200).json({ success: false, error: error.message });
   }
 };
