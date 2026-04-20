@@ -34,7 +34,7 @@ exports.handler = async function(event, context) {
         fields: [
           { slug: 'first_name', value: name || '' },
           { slug: 'phone_number', value: whatsapp || '' },
-          { slug: 'bot_interes', value: bot_interest || 'no_seleccionado' }
+          { slug: 'last_name', value: bot_interest === 'buy' ? 'BOSS-BUY' : bot_interest === 'star' ? 'BOSS-STAR' : 'SIN-SELECCION' }
         ],
         tags: [
           { tagId: 1968751 }
