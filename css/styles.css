@@ -2712,9 +2712,9 @@ button:focus-visible {
 
   .hero-visual {
     position: absolute;
-    top: 20px;
-    right: -20px;
-    width: 180px;
+    top: -10px;
+    right: -10px;
+    width: 130px;
     height: auto;
     opacity: 0.12;
     z-index: -1;
@@ -2724,7 +2724,7 @@ button:focus-visible {
   }
 
   .hero-robot-img {
-    max-width: 180px;
+    max-width: 130px;
     margin: 0;
     filter: none;
     animation: none;
