@@ -7,7 +7,7 @@ exports.handler = async function(event, context) {
   };
 
   try {
-    const response = await fetch('https://api.systeme.io/api/contacts?limit=1', {
+    const response = await fetch('https://api.systeme.io/api/contacts?limit=10', {
       method: 'GET',
       headers: {
         'X-API-Key': 'jtelcfoiu6l462z9ic4w2808jdm4rt44d7evx2rjdyky2tqm1kflh5byi0mbakey'
