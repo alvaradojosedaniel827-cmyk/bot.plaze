@@ -33,7 +33,8 @@ exports.handler = async function(event, context) {
         email: email,
         fields: [
           { slug: 'first_name', value: name || '' },
-          { slug: 'phone_number', value: whatsapp || '' }
+          { slug: 'phone_number', value: whatsapp || '' },
+          { slug: 'bot_interes', value: bot_interest || 'no_seleccionado' }
         ],
         tags: [
           { tagId: 1968751 }
