@@ -2698,9 +2698,38 @@ button:focus-visible {
   }
 
   /* Hero */
-  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hero-visual { height: 260px; }
-  .hero-robot-img { max-width: 320px; margin-top: 2rem; }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-visual {
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 220px;
+    height: auto;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-robot-img {
+    max-width: 220px;
+    margin: 0;
+    filter: none;
+    animation: none;
+  }
+
   .bot-hero-robot-img { max-width: 280px; }
 
   /* Secciones de bot */
