@@ -565,8 +565,7 @@ navLinks.querySelectorAll('a').forEach(link => {
 })();
 
 /* =============================================
-   FORMULARIO DEMO — CAMBIO 2
-   Spinner de loading + envío a Formspree
+   FORMULARIO DEMO — envío a Netlify Function
    ============================================= */
 (function demoForm() {
   var form = document.getElementById('demoForm');
@@ -584,26 +583,28 @@ navLinks.querySelectorAll('a').forEach(link => {
     submitBtn.classList.add('is-loading');
     submitBtn.textContent = 'Enviando...';
 
-    fetch('https://formspree.io/f/mwvaoaol', {
+    fetch('/.netlify/functions/submit-lead', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         name:         formName,
         email:        formEmail,
         whatsapp:     formWhatsapp,
-        bot_interest: formBot,
-        _subject:     'Nueva demo BOT.PLAZE - ' + formBot.toUpperCase()
+        bot_interest: formBot
       })
     })
-    .then(function() {
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log('Respuesta del servidor:', data);
       var isSubpage = window.location.pathname.includes('/bots/');
       window.location.href = isSubpage ? '../gracias.html' : 'gracias.html';
     })
     .catch(function(error) {
-      console.error('Error Formspree:', error);
+      console.error('Error:', error);
       var isSubpage = window.location.pathname.includes('/bots/');
       window.location.href = isSubpage ? '../gracias.html' : 'gracias.html';
     });
