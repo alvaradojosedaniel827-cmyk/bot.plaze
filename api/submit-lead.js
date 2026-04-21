@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
-const LIST_ID = 5;
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,6 +28,8 @@ module.exports = async function handler(req, res) {
 
     console.log('Enviando lead a Brevo:', email, 'Bot:', bot_interest);
 
+    var listId = bot_interest === 'star' ? 5 : 2;
+
     var response = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
@@ -42,7 +43,7 @@ module.exports = async function handler(req, res) {
           SMS: whatsapp,
           BOT_INTEREST: bot_interest.toUpperCase()
         },
-        listIds: [LIST_ID],
+        listIds: [listId],
         updateEnabled: true
       })
     });
