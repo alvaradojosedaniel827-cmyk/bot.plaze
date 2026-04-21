@@ -30,8 +30,6 @@ module.exports = async function handler(req, res) {
 
     var listId = bot_interest === 'star' ? 5 : 2;
 
-    var fullName = name;
-
     var response = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
@@ -42,7 +40,7 @@ module.exports = async function handler(req, res) {
         email: email,
         attributes: {
           FIRSTNAME: name,
-          SMS: whatsapp,
+          WH: whatsapp,
           BOT_INTEREST: bot_interest.toUpperCase()
         },
         listIds: [listId],
