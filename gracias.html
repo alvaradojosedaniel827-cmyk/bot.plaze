@@ -170,6 +170,40 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
     <span class="wa-float-tooltip">Habla con alguien real</span>
   </a>
 
+  <!-- ======================== CHAT BOT WIDGET ======================== -->
+  <div id="chatWidget" class="chat-widget">
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-header-avatar">🤖</div>
+          <div>
+            <div class="chat-header-name">BOSS Asistente</div>
+            <div class="chat-header-status">En línea</div>
+          </div>
+        </div>
+        <button class="chat-close" id="chatClose" aria-label="Cerrar chat">&times;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg chat-msg-bot">
+          <p>¡Hola! 👋 Soy el asistente virtual de BOT.PLAZE. ¿En qué puedo ayudarte? Puedo responder sobre nuestros bots, VPS, MetaTrader 4, o cómo empezar.</p>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Escribe tu pregunta..." autocomplete="off">
+        <button id="chatSend" class="chat-send" aria-label="Enviar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat">
+      <span class="chat-toggle-icon">🤖</span>
+      <span class="chat-toggle-badge" id="chatBadge">1</span>
+    </button>
+  </div>
+
   <script src="js/main.min.js"></script>
 
 

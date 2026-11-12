@@ -610,3 +610,79 @@ navLinks.querySelectorAll('a').forEach(link => {
     });
   });
 })();
+
+// ===== CHAT BOT WIDGET =====
+(function initChatBot() {
+  var toggle = document.getElementById('chatToggle');
+  var window_ = document.getElementById('chatWindow');
+  var close = document.getElementById('chatClose');
+  var input = document.getElementById('chatInput');
+  var send = document.getElementById('chatSend');
+  var messages = document.getElementById('chatMessages');
+  var badge = document.getElementById('chatBadge');
+
+  if (!toggle) return;
+
+  var chatHistory = [];
+  // Mismo límite que el servidor
+  input.maxLength = 500;
+
+  toggle.addEventListener('click', function() {
+    window_.classList.toggle('is-open');
+    if (window_.classList.contains('is-open')) {
+      badge.classList.add('hidden');
+      input.focus();
+    }
+  });
+
+  close.addEventListener('click', function() {
+    window_.classList.remove('is-open');
+  });
+
+  function addMessage(text, type) {
+    var div = document.createElement('div');
+    div.className = 'chat-msg chat-msg-' + type;
+    // textContent: el texto se muestra tal cual, sin ejecutar HTML
+    var p = document.createElement('p');
+    p.textContent = text;
+    div.appendChild(p);
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+    return div;
+  }
+
+  function sendMessage() {
+    var text = input.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    input.value = '';
+
+    chatHistory.push({ role: 'user', content: text });
+
+    var typing = addMessage('Escribiendo...', 'typing');
+
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      // Solo los últimos 10 mensajes, igual que el límite del servidor
+      body: JSON.stringify({ messages: chatHistory.slice(-10) })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      messages.removeChild(typing);
+      var reply = data.message || 'Lo siento, hubo un error. Escríbenos al WhatsApp: +593998958872';
+      addMessage(reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: reply });
+    })
+    .catch(function() {
+      messages.removeChild(typing);
+      addMessage('Lo siento, hubo un error. Escríbenos al WhatsApp: +593998958872', 'bot');
+    });
+  }
+
+  send.addEventListener('click', sendMessage);
+  input.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+})();
