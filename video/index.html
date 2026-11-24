@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Invertí $23,000 y 6 años | BOT.PLAZE</title>
-<meta name="description" content="Un video de 8 minutos con lo que aprendí en 6 años operando oro manualmente y cómo lo automaticé.">
+<title>Black Friday: BOSS STAR 1 + BOSS LADDER | BOT.PLAZE</title>
+<meta name="description" content="Black Friday BOT.PLAZE: los 2 sistemas de oro juntos, BOSS STAR 1 y BOSS LADDER. Antes $940, solo por Black Friday $247.">
 <!-- Página solo para tráfico de anuncios: no indexar -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
@@ -42,6 +42,8 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
     --blanco: #FAFAFA;
     --muted: #9AA3B2;
     --borde: rgba(201,169,97,0.25);
+    --rojo: #E0242C;
+    --rojo-oscuro: #7A0C12;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -54,223 +56,484 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
   }
   h1, h2, h3 { font-family: 'Playfair Display', serif; }
   .contenedor { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  .centro { text-align: center; }
+
+  /* ---------- 1. Barra fija con el contador (rojo y negro) ---------- */
+  .barra-bf {
+    position: sticky; top: 0; z-index: 50;
+    background: linear-gradient(90deg, #000 0%, #2A0507 50%, #000 100%);
+    border-bottom: 2px solid var(--rojo);
+    box-shadow: 0 6px 24px rgba(224,36,44,0.25);
+  }
+  .barra-bf .contenedor {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px;
+  }
+  .barra-bf .lema {
+    font-size: 13px; font-weight: 700; letter-spacing: 1.6px;
+    text-transform: uppercase; color: var(--blanco);
+  }
+  .barra-bf .lema b { color: var(--rojo); font-weight: 700; }
+  /* Punto rojo que parpadea como "en vivo" */
+  .barra-bf .lema::before {
+    content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 8px;
+    border-radius: 50%; background: var(--rojo); vertical-align: middle;
+    box-shadow: 0 0 8px var(--rojo); animation: parpadeo 1s steps(2, start) infinite;
+  }
+  @keyframes parpadeo { to { visibility: hidden; } }
+  .reloj { display: flex; align-items: center; gap: 6px; }
+  .reloj .celda {
+    min-width: 46px; text-align: center; padding: 4px 6px 3px;
+    background: linear-gradient(180deg, var(--rojo), var(--rojo-oscuro));
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; line-height: 1.1;
+    box-shadow: 0 2px 10px rgba(224,36,44,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  .reloj .celda b {
+    display: block; font-size: 20px; font-weight: 700; color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+  .reloj .celda small {
+    font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.75);
+  }
+  .reloj .sep { color: var(--rojo); font-weight: 700; font-size: 18px; }
+  /* Los segundos laten para reforzar que el tiempo corre */
+  #bfSegundos { animation: latidoSeg 1s ease-in-out infinite; }
+  @keyframes latidoSeg { 0%, 100% { opacity: 1; } 50% { opacity: .65; } }
+  .barra-bf .finalizado { display: none; font-size: 14px; color: #fff; font-weight: 500; }
 
   /* ---------- Encabezado ---------- */
-  .encabezado {
-    padding: 18px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
+  .encabezado { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
   .encabezado .contenedor { display: flex; align-items: center; justify-content: center; }
   .logo {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Playfair Display', serif; font-weight: 900;
-    font-size: 22px; letter-spacing: 1px; color: var(--blanco);
-    text-decoration: none;
+    font-size: 22px; letter-spacing: 1px; color: var(--blanco); text-decoration: none;
   }
-  .logo i {
-    width: 10px; height: 10px; background: var(--dorado);
-    transform: rotate(45deg); display: inline-block;
-  }
+  .logo i { width: 10px; height: 10px; background: var(--dorado); transform: rotate(45deg); display: inline-block; }
   .logo span { color: var(--dorado); }
-  /* Para usar tu logo real: reemplaza el <a class="logo"> por
-     <img src="assets/logo-botplaze.png" alt="BOT.PLAZE" height="36"> */
 
-  /* ---------- Hero ---------- */
-  .hero {
-    position: relative; text-align: center;
-    padding: 56px 0 72px; overflow: hidden;
-  }
+  /* ---------- 2. Hero ---------- */
+  .hero { position: relative; text-align: center; padding: 56px 0 64px; overflow: hidden; }
   .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201,169,97,0.16), transparent 70%);
-    pointer-events: none;
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201,169,97,0.18), transparent 70%);
   }
-  .etiqueta {
-    display: inline-block; border: 1px solid var(--borde);
-    border-radius: 999px; padding: 7px 18px; margin-bottom: 26px;
-    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--dorado);
+  .hero .contenedor { position: relative; }
+  .insignia {
+    display: inline-block; padding: 7px 18px; margin-bottom: 24px;
+    border-radius: 999px; background: var(--dorado); color: var(--negro);
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
   }
   .hero h1 {
-    font-size: clamp(2rem, 5.6vw, 3.9rem);
-    line-height: 1.12; font-weight: 900;
-    max-width: 900px; margin: 0 auto 18px;
+    font-size: clamp(2rem, 5.4vw, 3.8rem); line-height: 1.12; font-weight: 900;
+    max-width: 880px; margin: 0 auto 18px;
   }
   .hero h1 em {
-    font-style: normal; color: var(--dorado);
+    font-style: normal;
     background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
-  .hero .subtitulo {
-    color: var(--muted); font-size: 1.1rem;
-    max-width: 600px; margin: 0 auto 38px;
-  }
+  .hero .subtitulo { color: #CBD2DD; font-size: 1.12rem; max-width: 620px; margin: 0 auto 30px; }
+  .hero .subtitulo strong { color: var(--blanco); font-weight: 700; }
+  .hero .subtitulo s { color: var(--muted); text-decoration-color: var(--rojo); }
+  .hero .subtitulo .oro { color: var(--dorado-claro); font-weight: 700; }
+  .texto-chico { margin-top: 12px; font-size: 13px; color: var(--muted); }
 
-  /* ---------- Video ---------- */
-  .marco-video {
-    position: relative; max-width: 860px; margin: 0 auto;
-    border-radius: 14px; padding: 3px;
-    background: linear-gradient(135deg, var(--dorado), rgba(201,169,97,0.15), var(--dorado-claro));
-    box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(201,169,97,0.12);
+  /* ---------- Botones de compra ---------- */
+  .btn-bf {
+    display: inline-block; padding: 20px 38px;
+    font-size: 16px; font-weight: 700; letter-spacing: .6px;
+    border-radius: 8px; text-decoration: none; color: var(--negro);
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+    box-shadow: 0 10px 30px rgba(201,169,97,0.3);
+    animation: brillo 2.4s ease-in-out infinite; transition: transform .2s;
   }
-  .video-interior {
-    position: relative; aspect-ratio: 16 / 9;
-    border-radius: 12px; overflow: hidden; background: #000;
+  .btn-bf:hover { transform: translateY(-2px); }
+  @keyframes brillo {
+    0%, 100% { box-shadow: 0 10px 30px rgba(201,169,97,0.25); }
+    50%      { box-shadow: 0 10px 42px rgba(201,169,97,0.55); }
   }
-  .video-interior video,
-  .video-interior iframe {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    border: 0; object-fit: cover; background: #000;
-  }
-  /* Capa de aviso que se oculta sola cuando el video carga */
-  .video-aviso {
-    position: absolute; inset: 0; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 22px;
-    background: radial-gradient(circle at 50% 40%, #172033, #0A0E17);
-    color: var(--muted); font-size: 14px; letter-spacing: 1px;
-    cursor: pointer; transition: opacity .3s, background .3s;
-  }
-  /* Cuando el video ya cargó: se quita el texto y queda solo el botón play */
-  .video-aviso.listo { background: rgba(10,14,23,0.35); }
-  .video-aviso.listo .texto { display: none; }
+  /* Aviso de riesgo junto a cada botón */
+  .riesgo { max-width: 480px; margin: 14px auto 0; font-size: 12px; line-height: 1.5; color: #8C95A6; }
 
-  /* Botón play: late de grande a pequeño sin parar */
-  .video-aviso .play {
-    position: relative; width: 96px; height: 96px; border-radius: 50%;
-    border: 2px solid var(--dorado);
-    background: rgba(201,169,97,0.12);
-    display: flex; align-items: center; justify-content: center;
-    animation: latido 1.6s ease-in-out infinite;
+  /* Mensaje que aparece cuando el contador llega a cero */
+  .oferta-terminada {
+    display: none; max-width: 480px; margin: 0 auto; padding: 16px 18px;
+    border: 1px dashed var(--borde); border-radius: 8px;
+    color: var(--dorado-claro); font-weight: 500;
   }
-  /* Anillo dorado que se expande y se desvanece */
-  .video-aviso .play::before {
-    content: ''; position: absolute; inset: -2px; border-radius: 50%;
-    border: 2px solid var(--dorado);
-    animation: onda 1.6s ease-out infinite;
-  }
-  .video-aviso .play::after {
-    content: ''; margin-left: 6px;
-    border-left: 26px solid var(--dorado);
-    border-top: 16px solid transparent; border-bottom: 16px solid transparent;
-  }
-  @keyframes latido {
-    0%, 100% { transform: scale(1.18); box-shadow: 0 0 40px rgba(201,169,97,0.45); }
-    50%      { transform: scale(0.82); box-shadow: 0 0 12px rgba(201,169,97,0.15); }
-  }
-  @keyframes onda {
-    0%   { transform: scale(1);   opacity: .7; }
-    100% { transform: scale(1.9); opacity: 0; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .video-aviso .play, .video-aviso .play::before { animation: none; }
-  }
-  .video-aviso.oculto { opacity: 0; pointer-events: none; }
-  .duracion {
-    margin-top: 18px; font-size: 13px; color: var(--muted);
-    letter-spacing: 1.5px; text-transform: uppercase;
-  }
-  .duracion b { color: var(--dorado); font-weight: 500; }
+  body.bf-finalizada .js-compra,
+  body.bf-finalizada .barra-bf .lema,
+  body.bf-finalizada .reloj { display: none !important; }
+  body.bf-finalizada .oferta-terminada,
+  body.bf-finalizada .barra-bf .finalizado { display: block; }
 
-  /* ---------- Botones ---------- */
-  .btn-oro {
-    display: inline-block; background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
-    color: var(--negro); font-weight: 700; font-size: 15px; letter-spacing: .4px;
-    padding: 16px 38px; border-radius: 6px; text-decoration: none;
-    transition: transform .2s, box-shadow .2s;
-  }
-  .btn-oro:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,169,97,0.35); }
-  .cta-bloque { margin-top: 44px; }
-  .cta-bloque p { color: var(--muted); font-size: 14px; margin-top: 14px; }
-
-  /* ---------- Secciones ---------- */
-  .seccion { padding: 80px 0; }
+  /* ---------- Secciones generales ---------- */
+  .seccion { padding: 76px 0; }
   .seccion.alterna { background: var(--superficie); }
   .linea-oro { height: 1px; background: linear-gradient(90deg, transparent, var(--dorado), transparent); }
-  .rotulo {
-    font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--dorado); margin-bottom: 12px;
-  }
+  .rotulo { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dorado); margin-bottom: 12px; }
   .seccion h2 { font-size: clamp(1.7rem, 3.6vw, 2.6rem); margin-bottom: 18px; line-height: 1.2; }
+  .intro { color: var(--muted); max-width: 560px; margin: 0 auto 40px; }
 
-  /* Quiénes somos */
-  .quienes {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  /* ---------- 4. Bloque de precio ---------- */
+  .precio-bf {
+    max-width: 580px; margin: 0 auto; padding: 36px 22px 30px; text-align: center;
+    border: 1px solid rgba(201,169,97,0.5); border-radius: 16px;
+    background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(201,169,97,0.14), transparent 70%), var(--superficie);
+    box-shadow: 0 0 60px rgba(201,169,97,0.1);
   }
-  .quienes p { color: #CBD2DD; margin-bottom: 16px; font-size: 1.02rem; }
-  .quienes p strong { color: var(--blanco); font-weight: 500; }
-  .datos {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  .precio-bf .antes {
+    display: block; font-size: clamp(1.8rem, 7vw, 2.6rem); font-weight: 500; color: var(--muted);
+    text-decoration: line-through; text-decoration-color: rgba(224,36,44,0.85); text-decoration-thickness: 3px;
   }
-  .dato {
-    background: var(--superficie2); border: 1px solid var(--borde);
-    border-radius: 10px; padding: 22px 18px; text-align: center;
+  .precio-bf .ahora {
+    display: block; font-family: 'Playfair Display', serif; font-weight: 900;
+    font-size: clamp(4.2rem, 18vw, 6.5rem); line-height: 1; margin: 6px 0 14px;
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
-  .dato b {
-    display: block; font-family: 'Playfair Display', serif;
-    font-size: 1.7rem; color: var(--dorado); margin-bottom: 4px;
-  }
-  .dato span { font-size: 13px; color: var(--muted); }
+  .precio-bf .nota { color: var(--blanco); font-size: 1.05rem; font-weight: 500; margin-bottom: 22px; }
+  .precio-bf .nota b { color: var(--dorado-claro); }
 
-  /* Bots */
-  .centro { text-align: center; }
-  .centro .intro { color: var(--muted); max-width: 560px; margin: 0 auto 44px; }
-  .bots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+  /* ---------- 5. Tarjetas de los sistemas ---------- */
+  .bots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; text-align: left; }
   .bot {
-    position: relative; background: var(--superficie);
-    border: 1px solid var(--borde); border-radius: 12px;
-    padding: 34px 28px; overflow: hidden;
+    position: relative; background: var(--superficie2);
+    border: 1px solid var(--borde); border-radius: 12px; padding: 34px 28px; overflow: hidden;
   }
   .bot::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(90deg, var(--dorado), var(--dorado-claro));
   }
+  .bot.principal { border-color: rgba(201,169,97,0.65); box-shadow: 0 0 40px rgba(201,169,97,0.12); }
   .bot .nivel {
-    display: inline-block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-    background: rgba(201,169,97,0.12); color: var(--dorado);
-    padding: 4px 10px; border-radius: 3px; margin-bottom: 14px;
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    background: rgba(201,169,97,0.14); color: var(--dorado); padding: 4px 10px; border-radius: 3px; margin-bottom: 14px;
   }
+  .bot.principal .nivel { background: var(--dorado); color: var(--negro); }
   .bot h3 { font-size: 1.7rem; margin-bottom: 8px; }
-  .bot > p { color: var(--muted); font-size: .95rem; margin-bottom: 22px; }
+  .bot > p { color: #CBD2DD; font-size: .97rem; margin-bottom: 20px; }
   .fila {
     display: flex; justify-content: space-between; gap: 12px;
-    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
-    font-size: 14px;
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px;
   }
   .fila:last-of-type { border-bottom: 0; }
   .fila span:first-child { color: var(--muted); }
   .fila span:last-child { text-align: right; font-weight: 500; }
-  .capital {
-    margin-top: 20px; padding: 14px 16px; border-radius: 8px;
-    background: rgba(201,169,97,0.07); border: 1px solid var(--borde);
-    font-size: 13px; color: var(--muted);
+
+  /* ---------- 6. Tabla comparativa ---------- */
+  .tabla-envoltura { max-width: 760px; margin: 0 auto; overflow-x: auto; }
+  .tabla {
+    width: 100%; border-collapse: separate; border-spacing: 0; text-align: left;
+    border: 1px solid var(--borde); border-radius: 12px; overflow: hidden; font-size: 15px;
   }
-  .capital b { display: block; color: var(--dorado); font-size: 1.1rem; font-weight: 500; }
+  .tabla th, .tabla td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+  .tabla tr:last-child td { border-bottom: 0; }
+  .tabla thead th {
+    background: var(--superficie2); font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--dorado-claro);
+  }
+  .tabla tbody th { color: var(--muted); font-weight: 500; width: 26%; }
+  .tabla td { color: var(--blanco); }
+  .tabla .incluido { color: var(--dorado); font-weight: 700; }
+  .nota-tabla { margin-top: 24px; font-size: 1.1rem; font-weight: 500; }
+  .nota-tabla s { color: var(--muted); text-decoration-color: var(--rojo); }
+  .nota-tabla b { color: var(--dorado-claro); }
 
-  /* Cierre */
-  .cierre { text-align: center; padding: 76px 0; }
-  .cierre h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); margin-bottom: 14px; }
-  .cierre p.sub { color: var(--muted); margin-bottom: 30px; }
+  /* ---------- 7. Qué incluye ---------- */
+  .incluye { list-style: none; max-width: 560px; margin: 0 auto; text-align: left; }
+  .incluye li {
+    display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; margin-bottom: 12px;
+    background: var(--superficie2); border: 1px solid var(--borde); border-radius: 10px; font-size: 1.02rem;
+  }
+  /* Check dorado */
+  .incluye li::before {
+    content: '✓'; flex: 0 0 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+    color: var(--negro); font-weight: 700; font-size: 14px;
+  }
 
-  /* Pie y aviso legal */
+  /* ---------- 8. Cómo funciona ---------- */
+  .pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
+  .paso {
+    background: var(--superficie); border: 1px solid var(--borde); border-radius: 12px; padding: 28px 24px;
+  }
+  .paso .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px; border-radius: 50%; margin-bottom: 14px;
+    border: 2px solid var(--dorado); color: var(--dorado);
+    font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.2rem;
+  }
+  .paso h3 { font-size: 1.15rem; margin-bottom: 6px; }
+  .paso p { color: #CBD2DD; font-size: .97rem; }
+
+  /* ---------- 9. CTA final ---------- */
+  .cierre {
+    text-align: center; padding: 80px 0;
+    background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(201,169,97,0.14), transparent 70%);
+  }
+  .cierre h2 { font-size: clamp(1.7rem, 3.8vw, 2.6rem); margin-bottom: 12px; }
+  .cierre .sub { color: var(--muted); margin-bottom: 28px; }
+  .cierre .sub s { text-decoration-color: var(--rojo); }
+  .cierre .sub b { color: var(--dorado-claro); }
+
+  /* ---------- 10. Pie y aviso legal ---------- */
   .pie {
     border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 34px 0 44px; text-align: center;
-    font-size: 12px; color: #6F788A; line-height: 1.7;
+    padding: 34px 0 44px; text-align: center; font-size: 12px; color: #6F788A; line-height: 1.7;
   }
   .pie a { color: var(--muted); text-decoration: underline; margin: 0 8px; }
   .pie .legal { max-width: 760px; margin: 14px auto 0; }
+  .pie .legal.destacado { color: #A3ABBA; font-size: 13px; }
+
+  /* ================= DISEÑO VISUAL BLACK FRIDAY ================= */
+
+  /* Fondo de velas japonesas (SVG en línea, sin imágenes externas) fijo detrás del contenido */
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900' preserveAspectRatio='none'%3E%3Cpath d='M0 150H1600' stroke='%23C9A961' stroke-opacity='.18' stroke-dasharray='4 10'/%3E%3Cpath d='M0 300H1600' stroke='%23C9A961' stroke-opacity='.18' stroke-dasharray='4 10'/%3E%3Cpath d='M0 450H1600' stroke='%23C9A961' stroke-opacity='.18' stroke-dasharray='4 10'/%3E%3Cpath d='M0 600H1600' stroke='%23C9A961' stroke-opacity='.18' stroke-dasharray='4 10'/%3E%3Cpath d='M0 750H1600' stroke='%23C9A961' stroke-opacity='.18' stroke-dasharray='4 10'/%3E%3Cpath d='M12.5 384V467' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='6.3' y='420' width='12.5' height='30' rx='2' fill='%23C9A961'/%3E%3Cpath d='M37.5 390V485' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='31.3' y='420' width='12.5' height='41' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M62.5 430V526' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='56.3' y='461' width='12.5' height='34' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M87.5 466V559' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='81.3' y='495' width='12.5' height='37' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M112.5 517V588' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='106.3' y='532' width='12.5' height='37' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M137.5 540V588' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='131.3' y='569' width='12.5' height='9' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M162.5 556V624' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='156.3' y='578' width='12.5' height='10' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M187.5 576V625' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='181.3' y='588' width='12.5' height='14' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M212.5 573V637' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='206.3' y='601' width='12.5' height='8' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M237.5 551V645' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='231.3' y='586' width='12.5' height='23' rx='2' fill='%23C9A961'/%3E%3Cpath d='M262.5 550V620' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='256.3' y='568' width='12.5' height='18' rx='2' fill='%23C9A961'/%3E%3Cpath d='M287.5 546V585' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='281.3' y='559' width='12.5' height='10' rx='2' fill='%23C9A961'/%3E%3Cpath d='M312.5 539V595' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='306.3' y='556' width='12.5' height='3' rx='2' fill='%23C9A961'/%3E%3Cpath d='M337.5 526V590' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='331.3' y='556' width='12.5' height='3' rx='2' fill='%23C9A961'/%3E%3Cpath d='M362.5 503V581' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='356.3' y='519' width='12.5' height='36' rx='2' fill='%23C9A961'/%3E%3Cpath d='M387.5 499V556' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='381.3' y='519' width='12.5' height='23' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M412.5 532V584' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='406.3' y='542' width='12.5' height='23' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M437.5 504V600' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='431.3' y='532' width='12.5' height='32' rx='2' fill='%23C9A961'/%3E%3Cpath d='M462.5 519V567' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='456.3' y='532' width='12.5' height='15' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M487.5 520V567' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='481.3' y='539' width='12.5' height='7' rx='2' fill='%23C9A961'/%3E%3Cpath d='M512.5 515V577' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='506.3' y='539' width='12.5' height='11' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M537.5 515V574' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='531.3' y='550' width='12.5' height='3' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M562.5 526V625' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='556.3' y='553' width='12.5' height='45' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M587.5 560V627' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='581.3' y='583' width='12.5' height='15' rx='2' fill='%23C9A961'/%3E%3Cpath d='M612.5 563V640' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='606.3' y='583' width='12.5' height='28' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M637.5 542V629' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='631.3' y='568' width='12.5' height='43' rx='2' fill='%23C9A961'/%3E%3Cpath d='M662.5 547V600' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='656.3' y='567' width='12.5' height='3' rx='2' fill='%23C9A961'/%3E%3Cpath d='M687.5 555V621' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='681.3' y='567' width='12.5' height='22' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M712.5 504V601' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='706.3' y='524' width='12.5' height='64' rx='2' fill='%23C9A961'/%3E%3Cpath d='M737.5 466V539' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='731.3' y='504' width='12.5' height='20' rx='2' fill='%23C9A961'/%3E%3Cpath d='M762.5 492V535' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='756.3' y='504' width='12.5' height='9' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M787.5 472V549' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='781.3' y='484' width='12.5' height='29' rx='2' fill='%23C9A961'/%3E%3Cpath d='M812.5 438V518' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='806.3' y='473' width='12.5' height='11' rx='2' fill='%23C9A961'/%3E%3Cpath d='M837.5 415V489' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='831.3' y='446' width='12.5' height='27' rx='2' fill='%23C9A961'/%3E%3Cpath d='M862.5 350V457' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='856.3' y='366' width='12.5' height='81' rx='2' fill='%23C9A961'/%3E%3Cpath d='M887.5 314V380' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='881.3' y='341' width='12.5' height='25' rx='2' fill='%23C9A961'/%3E%3Cpath d='M912.5 318V393' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='906.3' y='341' width='12.5' height='24' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M937.5 284V380' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='931.3' y='319' width='12.5' height='46' rx='2' fill='%23C9A961'/%3E%3Cpath d='M962.5 281V330' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='956.3' y='316' width='12.5' height='3' rx='2' fill='%23C9A961'/%3E%3Cpath d='M987.5 308V352' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='981.3' y='316' width='12.5' height='3' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1012.5 281V332' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1006.3' y='316' width='12.5' height='7' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1037.5 310V379' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1031.3' y='324' width='12.5' height='18' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1062.5 299V358' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1056.3' y='328' width='12.5' height='14' rx='2' fill='%23C9A961'/%3E%3Cpath d='M1087.5 301V353' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1081.3' y='315' width='12.5' height='13' rx='2' fill='%23C9A961'/%3E%3Cpath d='M1112.5 282V344' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1106.3' y='313' width='12.5' height='3' rx='2' fill='%23C9A961'/%3E%3Cpath d='M1137.5 290V370' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1131.3' y='313' width='12.5' height='48' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1162.5 295V373' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1156.3' y='331' width='12.5' height='30' rx='2' fill='%23C9A961'/%3E%3Cpath d='M1187.5 296V379' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1181.3' y='331' width='12.5' height='39' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1212.5 336V421' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1206.3' y='370' width='12.5' height='13' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1237.5 352V406' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1231.3' y='383' width='12.5' height='3' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1262.5 309V420' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1256.3' y='339' width='12.5' height='47' rx='2' fill='%23C9A961'/%3E%3Cpath d='M1287.5 324V362' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1281.3' y='339' width='12.5' height='3' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1312.5 317V382' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1306.3' y='342' width='12.5' height='21' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1337.5 309V381' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1331.3' y='339' width='12.5' height='24' rx='2' fill='%23C9A961'/%3E%3Cpath d='M1362.5 317V353' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1356.3' y='337' width='12.5' height='3' rx='2' fill='%23C9A961'/%3E%3Cpath d='M1387.5 269V375' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1381.3' y='307' width='12.5' height='30' rx='2' fill='%23C9A961'/%3E%3Cpath d='M1412.5 273V359' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1406.3' y='307' width='12.5' height='17' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1437.5 272V336' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1431.3' y='299' width='12.5' height='25' rx='2' fill='%23C9A961'/%3E%3Cpath d='M1462.5 274V354' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1456.3' y='299' width='12.5' height='24' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1487.5 301V375' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1481.3' y='323' width='12.5' height='38' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1512.5 334V389' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1506.3' y='347' width='12.5' height='14' rx='2' fill='%23C9A961'/%3E%3Cpath d='M1537.5 322V395' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1531.3' y='347' width='12.5' height='25' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1562.5 353V441' stroke='%239C3B3B' stroke-width='2'/%3E%3Crect x='1556.3' y='372' width='12.5' height='38' rx='2' fill='%239C3B3B'/%3E%3Cpath d='M1587.5 376V435' stroke='%23C9A961' stroke-width='2'/%3E%3Crect x='1581.3' y='393' width='12.5' height='17' rx='2' fill='%23C9A961'/%3E%3Cpolyline points='13,380 38,421 63,455 88,492 113,529 138,538 163,548 188,561 213,570 238,546 263,528 288,519 313,516 338,516 363,479 388,502 413,525 438,492 463,507 488,499 513,510 538,513 563,558 588,543 613,571 638,528 663,527 688,548 713,484 738,464 763,473 788,444 813,433 838,406 863,326 888,301 913,325 938,279 963,276 988,276 1013,284 1038,302 1063,288 1088,275 1113,273 1138,321 1163,291 1188,330 1213,343 1238,346 1263,299 1288,302 1313,323 1338,299 1363,297 1388,267 1413,284 1438,259 1463,283 1488,321 1513,307 1538,332 1563,370 1588,353' fill='none' stroke='%23E3C98A' stroke-width='2.5' stroke-opacity='.8'/%3E%3C/svg%3E");
+    background-repeat: repeat-x; background-position: center center;
+    background-size: auto 100%;
+    opacity: .22;
+  }
+  /* Degradado oscuro encima de las velas para que el texto siempre se lea */
+  body::after {
+    content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(10,14,23,0.55), transparent 80%),
+      linear-gradient(180deg, rgba(10,14,23,0.55) 0%, rgba(10,14,23,0.25) 45%, rgba(10,14,23,0.7) 100%);
+  }
+  /* Secciones semitransparentes para que el "mercado" se note detrás */
+  .seccion.alterna { background: rgba(17,24,39,0.6); }
+  .encabezado { background: rgba(10,14,23,0.6); }
+
+  /* Hero con más luz dorada */
+  .hero::before {
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,169,97,0.28), transparent 70%),
+      radial-gradient(ellipse 40% 30% at 50% 78%, rgba(201,169,97,0.12), transparent 70%);
+  }
+
+  /* Insignia BLACK FRIDAY más visible, con brillo que la recorre */
+  .insignia {
+    position: relative; overflow: hidden;
+    padding: 10px 24px; font-size: 13px; letter-spacing: 3px;
+    background: linear-gradient(135deg, #B8954D, var(--dorado-claro) 50%, #B8954D);
+    box-shadow: 0 0 0 1px rgba(227,201,138,0.5), 0 0 28px rgba(201,169,97,0.45);
+  }
+  .insignia::after,
+  .btn-bf::after {
+    content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-20deg); animation: destello 3.2s ease-in-out infinite;
+  }
+  @keyframes destello { 0%, 60% { left: -60%; } 100% { left: 130%; } }
+
+  /* Contador estilo marcador: números grandes con línea central tipo tablero */
+  .reloj .celda {
+    position: relative; min-width: 58px; padding: 6px 8px 4px;
+    background: linear-gradient(180deg, #F0353D 0%, var(--rojo) 49%, #B5141C 51%, var(--rojo-oscuro) 100%);
+  }
+  .reloj .celda::after {
+    content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px;
+    background: rgba(0,0,0,0.45);
+  }
+  .reloj .celda b { font-size: 28px; letter-spacing: 1px; text-shadow: 0 2px 0 rgba(0,0,0,0.35); }
+  .reloj .sep { font-size: 24px; }
+
+  /* Botones con resplandor dorado y destello */
+  .btn-bf { position: relative; overflow: hidden; }
+  .btn-bf:hover { box-shadow: 0 12px 48px rgba(201,169,97,0.65); }
+
+  /* ---------- Precio dramático ---------- */
+  .precio-bf { position: relative; overflow: visible; border-width: 2px; }
+  /* Halo de luz detrás del precio */
+  .precio-bf::before {
+    content: ''; position: absolute; left: 50%; top: 42%; width: 420px; height: 260px; max-width: 90%;
+    transform: translate(-50%, -50%); pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(201,169,97,0.28), transparent 70%);
+    filter: blur(10px);
+  }
+  .precio-bf > * { position: relative; }
+  .precio-bf .ahora { filter: drop-shadow(0 0 22px rgba(201,169,97,0.55)); }
+  /* Sticker de descuento */
+  .sticker {
+    position: absolute !important; top: -22px; right: -14px; z-index: 2;
+    width: 92px; height: 92px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 35% 30%, #FF4A51, var(--rojo) 55%, #9E1219);
+    color: #fff; font-weight: 700; font-size: 1.55rem; letter-spacing: -.5px;
+    transform: rotate(12deg);
+    box-shadow: 0 8px 24px rgba(224,36,44,0.45), 0 0 0 4px rgba(10,14,23,0.9), 0 0 0 5px rgba(224,36,44,0.6);
+  }
+
+  /* ---------- Los 2 sistemas como paquete ---------- */
+  .paquete {
+    position: relative; display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch;
+    gap: 0 18px; padding: 26px; text-align: left;
+    border-radius: 20px; border: 1px solid rgba(201,169,97,0.45);
+    background: linear-gradient(160deg, rgba(201,169,97,0.10), rgba(10,14,23,0.6) 40%, rgba(201,169,97,0.08));
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), inset 0 0 60px rgba(201,169,97,0.06);
+  }
+  /* Signo + que une las dos cajas */
+  .paquete .mas {
+    align-self: center; width: 60px; height: 60px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+    color: var(--negro); font-size: 2.2rem; font-weight: 700; line-height: 1;
+    box-shadow: 0 0 0 6px rgba(10,14,23,0.95), 0 0 30px rgba(201,169,97,0.5);
+    z-index: 1;
+  }
+  /* Tarjetas tipo caja de producto */
+  .paquete .bot {
+    background: linear-gradient(165deg, #1C263B 0%, #121A2B 55%, #0E1422 100%);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+  }
+  .paquete .bot.principal {
+    border: 2px solid var(--dorado);
+    box-shadow: 0 0 0 1px rgba(227,201,138,0.25), 0 0 50px rgba(201,169,97,0.25), 0 18px 40px rgba(0,0,0,0.5);
+  }
+  .paquete .bot.principal::before { height: 5px; }
+  /* Icono de la caja */
+  .icono-caja {
+    width: 58px; height: 58px; border-radius: 14px; margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(201,169,97,0.1); border: 1px solid rgba(201,169,97,0.4);
+  }
+  .bot.principal .icono-caja {
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-claro)); border: 0;
+    box-shadow: 0 0 24px rgba(201,169,97,0.45);
+  }
+  .icono-caja svg { width: 30px; height: 30px; }
+
+  /* Tabla, lista y pasos con fondo propio para leerse sobre las velas */
+  .tabla { background: rgba(17,24,39,0.92); }
+  .incluye li { background: rgba(23,32,51,0.92); }
+  .paso { background: rgba(17,24,39,0.92); }
+  .paso .num { background: rgba(201,169,97,0.1); box-shadow: 0 0 18px rgba(201,169,97,0.25); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .barra-bf .lema::before, #bfSegundos, .btn-bf, .insignia::after, .btn-bf::after { animation: none; }
+  }
 
   /* ---------- Móvil ---------- */
   @media (max-width: 760px) {
-    .hero { padding: 40px 0 56px; }
+    .barra-bf .contenedor { gap: 8px; padding-top: 8px; padding-bottom: 8px; }
+    .barra-bf .lema { font-size: 11.5px; letter-spacing: 1.2px; width: 100%; text-align: center; }
+    .reloj .celda { min-width: 52px; padding: 5px 6px 3px; }
+    .reloj .celda b { font-size: 24px; }
+    .reloj .sep { font-size: 20px; }
+    /* Velas más suaves en celular para no cargar la lectura */
+    body::before { opacity: .15; }
+    .paquete { grid-template-columns: 1fr; gap: 0; padding: 16px; }
+    .paquete .mas { justify-self: center; margin: -14px 0; width: 52px; height: 52px; font-size: 1.9rem; }
+    .sticker { width: 76px; height: 76px; font-size: 1.3rem; top: -20px; right: -6px; }
+    .encabezado { padding: 12px 0; }
+    .hero { padding: 30px 0 48px; }
+    .insignia { margin-bottom: 16px; font-size: 11px; }
+    .hero h1 { font-size: clamp(1.8rem, 8.4vw, 2.5rem); margin-bottom: 14px; }
+    .hero .subtitulo { font-size: 1.02rem; margin-bottom: 24px; }
     .seccion { padding: 56px 0; }
-    .quienes { grid-template-columns: 1fr; gap: 32px; }
-    .btn-oro { width: 100%; text-align: center; }
+    .btn-bf { width: 100%; padding: 18px 16px; font-size: 15px; }
+    .bots, .pasos { grid-template-columns: 1fr; }
+    .tabla { font-size: 13.5px; }
+    .tabla th, .tabla td { padding: 11px 10px; }
+    .tabla tbody th { width: 28%; }
+  }
+
+  /* ---------- Dúo de robots: BOSS STAR 1 (dorado) + BOSS LADDER (plateado) ---------- */
+  .duo-robots {
+    position: relative; display: flex; justify-content: center; align-items: flex-end;
+    margin: 0 auto 18px;
+  }
+  .robot { position: relative; margin: 0; text-align: center; }
+  /* Resplandor detrás de cada robot */
+  .robot::before {
+    content: ''; position: absolute; left: 50%; top: 45%; width: 260px; height: 260px;
+    transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle, rgba(201,169,97,0.35), transparent 65%);
+  }
+  .robot.ladder::before { background: radial-gradient(circle, rgba(200,210,225,0.28), transparent 65%); }
+  .robot img {
+    position: relative; display: block; height: 280px; width: auto; margin: 0 auto;
+    /* Se desvanece abajo para fundirse con el fondo */
+    -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+    animation: flotar 4s ease-in-out infinite;
+  }
+  /* Mismo robot recoloreado a plateado para BOSS LADDER
+     (sin drop-shadow: la máscara lo recortaría en forma de recuadro) */
+  .robot.ladder img {
+    filter: grayscale(1) brightness(1.18) contrast(1.12);
+    animation-delay: -2s;
+  }
+  /* Títulos debajo de cada robot */
+  .robot figcaption { position: relative; margin-top: -6px; line-height: 1.25; }
+  .robot figcaption b {
+    display: block; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.25rem; letter-spacing: .5px;
+  }
+  .robot.star figcaption b { color: var(--dorado-claro); }
+  .robot.ladder figcaption b { color: #DDE3EC; }
+  .robot figcaption small { font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); }
+  /* Precio del hero: anterior tachado + nuevo grande con resplandor */
+  .precio-hero {
+    display: flex; align-items: baseline; justify-content: center; gap: 18px;
+    margin: 0 auto 26px; line-height: 1;
+  }
+  .precio-hero s {
+    font-size: clamp(1.6rem, 6vw, 2.3rem); font-weight: 500; color: var(--muted);
+    text-decoration-color: var(--rojo); text-decoration-thickness: 3px;
+  }
+  .precio-hero b {
+    font-family: 'Playfair Display', serif; font-weight: 900;
+    font-size: clamp(3.2rem, 13vw, 4.6rem);
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-claro));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 18px rgba(201,169,97,0.5));
+  }
+
+  /* Sticker "2x1" entre los dos robots */
+  .dos-x-uno {
+    position: relative; z-index: 2; align-self: center; margin: 0 -18px 40px;
+    width: 96px; height: 96px; flex: 0 0 96px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2rem; color: #fff;
+    background: radial-gradient(circle at 35% 30%, #FF4A51, var(--rojo) 55%, #9E1219);
+    transform: rotate(-10deg);
+    box-shadow: 0 8px 26px rgba(224,36,44,0.5), 0 0 0 4px rgba(10,14,23,0.95), 0 0 0 5px rgba(224,36,44,0.6);
+    animation: pulsoSticker 2s ease-in-out infinite;
+  }
+  @keyframes pulsoSticker { 0%, 100% { transform: rotate(-10deg) scale(1); } 50% { transform: rotate(-10deg) scale(1.08); } }
+  @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @media (prefers-reduced-motion: reduce) { .robot img, .dos-x-uno { animation: none; } }
+  /* Celular: robots más pequeños para que el título y el botón sigan cerca */
+  @media (max-width: 760px) {
+    .duo-robots { margin-bottom: 14px; }
+    .robot img { height: 190px; }
+    .robot::before { width: 170px; height: 170px; }
+    .robot figcaption b { font-size: 1rem; }
+    .robot figcaption small { font-size: 9.5px; letter-spacing: 1.2px; }
+    .dos-x-uno { width: 70px; height: 70px; flex-basis: 70px; font-size: 1.45rem; margin: 0 -14px 34px; }
   }
 </style>
 </head>
 <body>
+
+<!-- 1. BARRA FIJA BLACK FRIDAY: contador regresivo de 12 horas por visitante -->
+<div class="barra-bf" id="barraBF" role="timer" aria-live="off">
+  <div class="contenedor">
+    <span class="lema">🔥 <b>Black Friday</b> — Termina en</span>
+    <div class="reloj" aria-label="Tiempo restante de la oferta">
+      <div class="celda"><b id="bfHoras">12</b><small>Horas</small></div>
+      <span class="sep">:</span>
+      <div class="celda"><b id="bfMinutos">00</b><small>Min</small></div>
+      <span class="sep">:</span>
+      <div class="celda"><b id="bfSegundos">00</b><small>Seg</small></div>
+    </div>
+    <span class="finalizado">La oferta de Black Friday ha finalizado</span>
+  </div>
+</div>
 
 <!-- ENCABEZADO -->
 <header class="encabezado">
@@ -279,175 +542,264 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
   </div>
 </header>
 
-<!-- HERO: TÍTULO + VIDEO -->
+<!-- 2. HERO -->
 <section class="hero">
   <div class="contenedor">
+    <!-- Dúo de robots: lo primero que se ve. Dorado = BOSS STAR 1, plateado = BOSS LADDER -->
+    <div class="duo-robots">
+      <figure class="robot star">
+        <img src="/assets/images/hero-robot.png.png" alt="Robot dorado BOSS STAR 1" width="408" height="612" fetchpriority="high">
+        <figcaption><b>BOSS STAR 1</b><small>Sistema principal</small></figcaption>
+      </figure>
+      <div class="dos-x-uno" aria-label="2 por 1">2x1</div>
+      <figure class="robot ladder">
+        <img src="/assets/images/hero-robot.png.png" alt="Robot plateado BOSS LADDER" width="408" height="612">
+        <figcaption><b>BOSS LADDER</b><small>Incluido</small></figcaption>
+      </figure>
+    </div>
+    <!-- Precio a la vista desde el inicio: anterior tachado y nuevo -->
+    <div class="precio-hero js-compra" aria-label="Antes 940 dólares, ahora 247 dólares">
+      <s>$940</s>
+      <b>$247</b>
+    </div>
+    <div class="insignia">Oferta Black Friday</div>
+    <h1>2 sistemas que <em>analizan el oro por ti</em>. Hoy, a un solo precio.</h1>
+    <p class="subtitulo"><strong>BOSS STAR 1 + BOSS LADDER</strong> juntos. Antes <s>$940</s> — solo por Black Friday, los dos por <span class="oro">$247</span>.</p>
 
-    <div class="etiqueta">Mira este video antes de operar oro</div>
+    <a class="btn-bf btn-compra js-compra" href="https://wa.me/593998950621?text=Hola%2C%20vengo%20de%20TikTok%20y%20quiero%20la%20promo%20de%20Black%20Friday%3A%20BOSS%20STAR%201%20%2B%20BOSS%20LADDER%20por%20%24247" target="_blank" rel="noopener">QUIERO LA OFERTA DE $247</a>
+    <p class="texto-chico js-compra">Pago único. Soporte y guía de instalación incluidos.</p>
+    <p class="oferta-terminada">La oferta de Black Friday ha finalizado</p>
+    <p class="riesgo">El trading conlleva riesgo de pérdida de capital. Los resultados pasados no garantizan resultados futuros. Esto no es asesoría financiera.</p>
+  </div>
+</section>
 
-    <!-- TÍTULO PRINCIPAL
-         Versión alterna si quieres otra: "Esto me costó $23,000 y 6 años. Te lo cuento en 8 minutos." -->
-    <h1>Invertí <em>$23,000</em> y tardé <em>6 años</em> en entender esto. Te lo explico en 8 minutos.</h1>
+<!-- 3. VIDEO: eliminado a pedido del cliente (se puede restaurar desde git) -->
 
-    <p class="subtitulo">Soy Diego, desarrollador de bots de trading. Mira el video completo y evita los errores que yo cometí operando oro manualmente.</p>
+<!-- 4. BLOQUE DE PRECIO -->
+<section class="seccion alterna" id="oferta">
+  <div class="contenedor">
+    <div class="precio-bf">
+      <!-- Sticker de descuento: 693 / 940 = 73.7 % -->
+      <span class="sticker" aria-label="74 por ciento de descuento">-74%</span>
+      <div class="rotulo">Precio Black Friday</div>
+      <span class="antes">$940</span>
+      <span class="ahora">$247</span>
+      <p class="nota">Los 2 sistemas juntos. <b>Ahorras $693.</b> Solo por Black Friday.</p>
 
-    <!-- VIDEO -->
-    <div class="marco-video">
-      <div class="video-interior">
+      <a class="btn-bf btn-compra js-compra" href="https://wa.me/593998950621?text=Hola%2C%20vengo%20de%20TikTok%20y%20quiero%20la%20promo%20de%20Black%20Friday%3A%20BOSS%20STAR%201%20%2B%20BOSS%20LADDER%20por%20%24247" target="_blank" rel="noopener">APROVECHAR LA PROMO</a>
+      <p class="oferta-terminada">La oferta de Black Friday ha finalizado</p>
+      <p class="riesgo">El trading conlleva riesgo de pérdida de capital. Los resultados pasados no garantizan resultados futuros. Esto no es asesoría financiera.</p>
+    </div>
+  </div>
+</section>
 
-        <!-- OPCIÓN A: video propio alojado en Vercel Blob (fuera del proyecto) -->
-        <!-- Portada: fotograma del minuto 4:56 del video -->
-        <video id="videoPrincipal" controls playsinline preload="metadata" poster="/assets/portada-video.jpg">
-          <source src="https://oh9iozmqrwdiqboy.public.blob.vercel-storage.com/video%20final%20.mp4" type="video/mp4">
-        </video>
+<div class="linea-oro"></div>
 
-        <!-- OPCIÓN B: YouTube o Vimeo. Borra el <video> de arriba y usa esto:
-        <iframe src="https://www.youtube.com/embed/TU_ID_DE_VIDEO?rel=0"
-                allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-        -->
+<!-- 5. LOS 2 SISTEMAS -->
+<section class="seccion" id="sistemas">
+  <div class="contenedor centro">
+    <div class="rotulo">Incluido en la promo</div>
+    <h2>Los 2 sistemas de Black Friday</h2>
+    <p class="intro">Un sistema principal y un complemento, juntos en un solo paquete.</p>
 
-        <div class="video-aviso" id="videoAviso">
-          <div class="play"></div>
-          <div class="texto">TU VIDEO DE 8 MINUTOS VA AQUÍ</div>
+    <!-- Paquete: las 2 cajas unidas por un "+" -->
+    <div class="paquete">
+      <!-- Tarjeta 1: sistema principal -->
+      <article class="bot principal">
+        <!-- Icono: estrella -->
+        <div class="icono-caja" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#0A0E17"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
         </div>
+        <span class="nivel">Sistema principal</span>
+        <h3>BOSS STAR 1</h3>
+        <p>El sistema que analiza el oro por ti. Sistema de automatización que lee el mercado del oro y ejecuta operaciones según sus reglas.</p>
+        <!-- Datos técnicos enviados por el cliente -->
+        <div class="fila"><span>Activo</span><span>Oro (XAUUSD)</span></div>
+        <div class="fila"><span>Plataforma</span><span>MT4 y MT5 (MT5 con cuenta hedging)</span></div>
+        <div class="fila"><span>Dirección</span><span>Compra y venta</span></div>
+        <div class="fila"><span>Gestión</span><span>Lote fijo, sin rejilla ni martingala</span></div>
+      </article>
+
+      <!-- Signo que une los dos sistemas -->
+      <div class="mas" aria-hidden="true">+</div>
+
+      <!-- Tarjeta 2: complemento -->
+      <article class="bot">
+        <!-- Icono: escalera de velas -->
+        <div class="icono-caja" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#C9A961"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg>
+        </div>
+        <span class="nivel">Incluido en la promo</span>
+        <h3>BOSS LADDER</h3>
+        <p>El complemento que suma una segunda estrategia automatizada sobre el oro, con su propia lógica de operación.</p>
+        <!-- Datos técnicos enviados por el cliente -->
+        <div class="fila"><span>Activo</span><span>Oro (XAUUSD)</span></div>
+        <div class="fila"><span>Plataforma</span><span>MT4 y MT5</span></div>
+        <div class="fila"><span>Estrategia</span><span>Rejilla bidireccional por bloques</span></div>
+        <div class="fila"><span>Límites configurables</span><span>Por canasta y diario</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="linea-oro"></div>
+
+<!-- 6. TABLA COMPARATIVA -->
+<section class="seccion alterna" id="comparativa">
+  <div class="contenedor centro">
+    <div class="rotulo">Se complementan</div>
+    <h2>Cómo trabajan juntos</h2>
+    <p class="intro">Cada sistema cumple un papel distinto dentro del mismo paquete.</p>
+
+    <div class="tabla-envoltura">
+      <table class="tabla">
+        <thead>
+          <tr><th></th><th>BOSS STAR 1</th><th>BOSS LADDER</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Rol</th><td>Sistema principal</td><td>Complemento incluido</td></tr>
+          <tr><th>Qué hace</th><td>Analiza y opera el oro por ti</td><td>Añade una segunda estrategia</td></tr>
+          <tr><th>Ideal para</th><td>Quien quiere automatizar su análisis</td><td>Complementar al sistema principal</td></tr>
+          <tr><th>Activo</th><td>Oro (XAUUSD)</td><td>Oro (XAUUSD)</td></tr>
+          <tr><th>En la promo</th><td class="incluido">✓ Incluido</td><td class="incluido">✓ Incluido</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="nota-tabla">Por separado valdrían <s>$940</s>. Hoy, los dos por <b>$247</b>.</p>
+  </div>
+</section>
+
+<div class="linea-oro"></div>
+
+<!-- 7. QUÉ INCLUYE LA COMPRA -->
+<section class="seccion" id="incluye">
+  <div class="contenedor centro">
+    <div class="rotulo">Tu compra</div>
+    <h2>Qué incluye la compra</h2>
+    <ul class="incluye">
+      <li>Los 2 sistemas: BOSS STAR 1 + BOSS LADDER</li>
+      <li>Guía de instalación paso a paso</li>
+      <li>Soporte para dejarlo funcionando</li>
+      <li>Acceso de por vida a esta versión</li>
+    </ul>
+  </div>
+</section>
+
+<div class="linea-oro"></div>
+
+<!-- 8. CÓMO FUNCIONA -->
+<section class="seccion alterna" id="como-funciona">
+  <div class="contenedor centro">
+    <div class="rotulo">Así de simple</div>
+    <h2>Cómo funciona</h2>
+    <p class="intro">Tres pasos y lo tienes listo.</p>
+    <div class="pasos">
+      <div class="paso">
+        <span class="num">1</span>
+        <h3>Escríbenos por WhatsApp</h3>
+        <p>Escríbenos por WhatsApp y asegura tu promo de $247.</p>
+      </div>
+      <div class="paso">
+        <span class="num">2</span>
+        <h3>Recibe todo</h3>
+        <p>Te enviamos los sistemas y la guía de instalación.</p>
+      </div>
+      <div class="paso">
+        <span class="num">3</span>
+        <h3>Actívalos</h3>
+        <p>Los activas y empiezan a analizar el oro por ti.</p>
       </div>
     </div>
-    <p class="duracion">Duración: <b>8 minutos</b></p>
-
-    <div class="cta-bloque">
-      <!-- Reemplaza el # por el link de tu formulario de demo en Systeme.io -->
-      <a class="btn-oro" href="#" id="ctaDemo">ACTIVA TU DEMO GRATIS DE 7 DÍAS</a>
-      <p>Sin tarjeta. Sin compromiso. La demo de 7 días no dura para siempre.</p>
-    </div>
-
   </div>
 </section>
 
 <div class="linea-oro"></div>
 
-<!-- QUIÉNES SOMOS -->
-<section class="seccion alterna" id="quienes-somos">
-  <div class="contenedor quienes">
-    <div>
-      <div class="rotulo">Quiénes somos</div>
-      <h2>Detrás de BOT.PLAZE hay un trader que ya pasó por esto</h2>
-      <p><strong>Soy Diego Alvarado, desde Ecuador.</strong> Operé oro de forma manual durante años, pegado a la pantalla, decidiendo con emociones y pagando el precio por ello.</p>
-      <p>Aprendí a programar Expert Advisors en MQL4 para sacar mis propias emociones de la operativa. Hoy mis bots operan con <strong>lógica matemática</strong> y indicadores técnicos, y yo los comparto con otros traders.</p>
-      <p>No te vendo humo. Te muestro cómo funciona por dentro y te dejo probarlo antes de decidir.</p>
-    </div>
-    <div class="datos">
-      <div class="dato"><b>6 años</b><span>operando oro</span></div>
-      <div class="dato"><b>MQL4</b><span>bots desarrollados por mí</span></div>
-      <div class="dato"><b>24/5</b><span>operando en automático</span></div>
-      <div class="dato"><b>WhatsApp</b><span>soporte técnico incluido</span></div>
-    </div>
-  </div>
-</section>
-
-<div class="linea-oro"></div>
-
-<!-- LOS BOTS -->
-<section class="seccion" id="bots">
-  <div class="contenedor centro">
-    <div class="rotulo">Nuestros bots</div>
-    <h2>Dos bots, un mismo enfoque: operar sin emociones</h2>
-    <p class="intro">Ambos operan XAUUSD en MetaTrader 4 y combinan 4 indicadores: EMA, RSI, MACD y ADX.</p>
-
-    <div class="bots" style="text-align:left">
-
-      <article class="bot">
-        <span class="nivel">Nivel de entrada</span>
-        <h3>Boss Gold BUY</h3>
-        <p>Busca rebotes del precio del oro y ejecuta únicamente operaciones de compra.</p>
-        <div class="fila"><span>Activo</span><span>XAUUSD</span></div>
-        <div class="fila"><span>Plataforma</span><span>MetaTrader 4</span></div>
-        <div class="fila"><span>Temporalidad</span><span>M15</span></div>
-        <div class="fila"><span>Dirección</span><span>Solo BUY</span></div>
-        <div class="fila"><span>Indicadores</span><span>EMA, RSI, MACD, ADX</span></div>
-        <div class="capital">Capital mínimo<b>$100 USD</b></div>
-      </article>
-
-      <article class="bot">
-        <span class="nivel">Nivel avanzado</span>
-        <h3>Boss Gold STAR</h3>
-        <p>Opera en ambas direcciones con una estrategia grid, pensada para cuentas con más capital.</p>
-        <div class="fila"><span>Activo</span><span>XAUUSD</span></div>
-        <div class="fila"><span>Plataforma</span><span>MetaTrader 4</span></div>
-        <div class="fila"><span>Temporalidad</span><span>M15</span></div>
-        <div class="fila"><span>Dirección</span><span>BUY y SELL</span></div>
-        <div class="fila"><span>Indicadores</span><span>EMA, RSI, MACD, ADX</span></div>
-        <div class="capital">Capital mínimo<b>$500 USD</b></div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<div class="linea-oro"></div>
-
-<!-- CIERRE -->
+<!-- 9. CTA FINAL -->
 <section class="cierre">
   <div class="contenedor">
-    <h2>Pruébalo antes de decidir</h2>
-    <p class="sub">Activa tu demo gratis de 7 días y mira el bot operando en tu MetaTrader.</p>
-    <a class="btn-oro" href="#" id="ctaDemo2">ACTIVA TU DEMO GRATIS DE 7 DÍAS</a>
+    <h2>La promo de Black Friday termina pronto</h2>
+    <p class="sub">BOSS STAR 1 + BOSS LADDER. Antes <s>$940</s>, hoy <b>$247</b>.</p>
+    <a class="btn-bf btn-compra js-compra" href="https://wa.me/593998950621?text=Hola%2C%20vengo%20de%20TikTok%20y%20quiero%20la%20promo%20de%20Black%20Friday%3A%20BOSS%20STAR%201%20%2B%20BOSS%20LADDER%20por%20%24247" target="_blank" rel="noopener">QUIERO LA OFERTA DE $247</a>
+    <p class="oferta-terminada">La oferta de Black Friday ha finalizado</p>
+    <p class="riesgo">El trading conlleva riesgo de pérdida de capital. Los resultados pasados no garantizan resultados futuros. Esto no es asesoría financiera.</p>
   </div>
 </section>
 
-<!-- PIE + AVISO LEGAL -->
+<!-- 10. PIE + AVISO LEGAL (cumplimiento TikTok / Meta) -->
 <footer class="pie">
   <div class="contenedor">
     <div>
       <a href="/privacidad.html">Política de privacidad</a>
       <a href="/terminos.html">Términos y condiciones</a>
     </div>
+    <p class="legal destacado">
+      El trading conlleva riesgo de pérdida de capital. Los resultados pasados no garantizan
+      resultados futuros. Esto no es asesoría financiera.
+    </p>
+    <!-- Aclaración de qué se vende: software, no gestión de dinero (reduce rechazos en TikTok / Meta) -->
     <p class="legal">
-      El trading de divisas y metales conlleva un alto riesgo y puede resultar en pérdida de capital.
-      Los resultados pasados no garantizan resultados futuros. Las operaciones mostradas son resultado
-      del análisis automático de indicadores técnicos. BOT.PLAZE no ofrece asesoría financiera ni
-      garantiza resultados.
+      BOT.PLAZE vende licencias de sistemas de automatización para MetaTrader. No gestionamos fondos de clientes,
+      no recibimos depósitos ni garantizamos resultados. Cada usuario opera en su propia cuenta
+      y bajo su propia responsabilidad.
     </p>
     <p class="legal">© 2026 BOT.PLAZE. Todos los derechos reservados.</p>
   </div>
 </footer>
 
 <script>
-  // Botón play animado sobre el video
+  // Contador regresivo de Black Friday: 12 horas por visitante
   (function () {
-    var video = document.getElementById('videoPrincipal');
-    var aviso = document.getElementById('videoAviso');
-    if (!video || !aviso) return;
+    var CLAVE = 'botplaze_bf_fin';          // clave en localStorage
+    var DURACION = 12 * 60 * 60 * 1000;    // 12 horas en milisegundos
+    var ahora = Date.now();
+    var fin = null;
 
-    // Cuando el video carga, queda solo el botón play latiendo
-    video.addEventListener('loadedmetadata', function () {
-      aviso.classList.add('listo');
-    });
-    // Clic en el botón: reproduce el video
-    aviso.addEventListener('click', function () {
-      video.play();
-    });
-    // Al reproducir se oculta; al pausar o terminar vuelve a aparecer
-    video.addEventListener('play', function () {
-      aviso.classList.add('oculto');
-    });
-    video.addEventListener('pause', function () {
-      aviso.classList.remove('oculto');
-    });
-    video.addEventListener('ended', function () {
-      aviso.classList.remove('oculto');
-    });
+    // Atajo solo para pruebas: abrir la página con ?reiniciar vuelve el contador a 12:00:00
+    if (/[?&]reiniciar\b/.test(window.location.search)) {
+      try { window.localStorage.removeItem(CLAVE); } catch (e) { /* almacenamiento bloqueado */ }
+    }
+
+    // Leer la hora de fin guardada (puede fallar si el almacenamiento está bloqueado)
+    try {
+      var guardado = parseInt(window.localStorage.getItem(CLAVE), 10);
+      if (!isNaN(guardado) && guardado > 0) fin = guardado;
+    } catch (e) { fin = null; }
+
+    // Primera visita (o sin almacenamiento): arranca en 12:00:00 y se guarda la hora de fin
+    if (fin === null) {
+      fin = ahora + DURACION;
+      try { window.localStorage.setItem(CLAVE, String(fin)); } catch (e) { /* sin almacenamiento: dura solo esta visita */ }
+    }
+
+    var elHoras = document.getElementById('bfHoras');
+    var elMin = document.getElementById('bfMinutos');
+    var elSeg = document.getElementById('bfSegundos');
+    var intervalo = null;
+
+    // Agrega un cero a la izquierda
+    function dos(n) { return n < 10 ? '0' + n : String(n); }
+
+    // Al llegar a cero: oculta contador y botones de compra y muestra el aviso de fin
+    function finalizar() {
+      document.body.classList.add('bf-finalizada');
+      if (intervalo) clearInterval(intervalo);
+    }
+
+    function actualizar() {
+      var restante = fin - Date.now();
+      if (restante <= 0) { finalizar(); return; }
+      var totalSeg = Math.floor(restante / 1000);
+      elHoras.textContent = dos(Math.floor(totalSeg / 3600));
+      elMin.textContent = dos(Math.floor((totalSeg % 3600) / 60));
+      elSeg.textContent = dos(totalSeg % 60);
+    }
+
+    actualizar();
+    if (!document.body.classList.contains('bf-finalizada')) {
+      intervalo = setInterval(actualizar, 1000);
+    }
   })();
-
-  // Botones de demo: abren el chat de WhatsApp con mensaje listo
-  var NUMERO_WHATSAPP = '593998950621';
-  var MENSAJE_DEMO = 'Hola, vi el video y quiero activar mi demo gratis de 7 días';
-  var URL_DEMO = 'https://wa.me/' + NUMERO_WHATSAPP + '?text=' + encodeURIComponent(MENSAJE_DEMO);
-  ['ctaDemo', 'ctaDemo2'].forEach(function (id) {
-    var boton = document.getElementById(id);
-    boton.setAttribute('href', URL_DEMO);
-    boton.setAttribute('target', '_blank');
-    boton.setAttribute('rel', 'noopener');
-  });
 </script>
 
 <script>
@@ -458,41 +810,13 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
     // Al cargar la página
     fbq('track', 'ViewContent');
 
-    var video = document.getElementById('videoPrincipal');
-    if (video) {
-      // Cada evento de video se envía una sola vez por visita
-      var enviado = { play: false, mitad: false, completo: false };
-
-      // Primer play del video
-      video.addEventListener('play', function () {
-        if (enviado.play) return;
-        enviado.play = true;
-        fbq('trackCustom', 'VideoPlay');
-      });
-      // Llega al 50% de reproducción
-      video.addEventListener('timeupdate', function () {
-        if (enviado.mitad || !video.duration) return;
-        if (video.currentTime / video.duration >= 0.5) {
-          enviado.mitad = true;
-          fbq('trackCustom', 'Video50');
-        }
-      });
-      // Termina el video
-      video.addEventListener('ended', function () {
-        if (enviado.completo) return;
-        enviado.completo = true;
-        fbq('trackCustom', 'VideoCompleto');
-      });
-    }
-
-    // Clic en cualquiera de los 2 botones de WhatsApp
-    ['ctaDemo', 'ctaDemo2'].forEach(function (id) {
-      var boton = document.getElementById(id);
-      if (!boton) return;
-      boton.addEventListener('click', function () {
+    // Clic en cualquier botón de compra (WhatsApp Black Friday)
+    var botones = document.querySelectorAll('.btn-compra');
+    for (var i = 0; i < botones.length; i++) {
+      botones[i].addEventListener('click', function () {
         fbq('track', 'Contact');
       });
-    });
+    }
   })();
 </script>
 
