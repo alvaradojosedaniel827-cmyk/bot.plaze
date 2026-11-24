@@ -99,7 +99,6 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
   /* Los segundos laten para reforzar que el tiempo corre */
   #bfSegundos { animation: latidoSeg 1s ease-in-out infinite; }
   @keyframes latidoSeg { 0%, 100% { opacity: 1; } 50% { opacity: .65; } }
-  .barra-bf .finalizado { display: none; font-size: 14px; color: #fff; font-weight: 500; }
 
   /* ---------- Encabezado ---------- */
   .encabezado { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -156,17 +155,7 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
   /* Aviso de riesgo junto a cada botón */
   .riesgo { max-width: 480px; margin: 14px auto 0; font-size: 12px; line-height: 1.5; color: #8C95A6; }
 
-  /* Mensaje que aparece cuando el contador llega a cero */
-  .oferta-terminada {
-    display: none; max-width: 480px; margin: 0 auto; padding: 16px 18px;
-    border: 1px dashed var(--borde); border-radius: 8px;
-    color: var(--dorado-claro); font-weight: 500;
-  }
-  body.bf-finalizada .js-compra,
-  body.bf-finalizada .barra-bf .lema,
-  body.bf-finalizada .reloj { display: none !important; }
-  body.bf-finalizada .oferta-terminada,
-  body.bf-finalizada .barra-bf .finalizado { display: block; }
+
 
   /* ---------- Secciones generales ---------- */
   .seccion { padding: 76px 0; }
@@ -531,7 +520,6 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
       <span class="sep">:</span>
       <div class="celda"><b id="bfSegundos">00</b><small>Seg</small></div>
     </div>
-    <span class="finalizado">La oferta de Black Friday ha finalizado</span>
   </div>
 </div>
 
@@ -568,7 +556,6 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
 
     <a class="btn-bf btn-compra js-compra" href="https://wa.me/593998950621?text=Hola%2C%20vengo%20de%20TikTok%20y%20quiero%20la%20promo%20de%20Black%20Friday%3A%20BOSS%20STAR%201%20%2B%20BOSS%20LADDER%20por%20%24247" target="_blank" rel="noopener">QUIERO LA OFERTA DE $247</a>
     <p class="texto-chico js-compra">Pago único. Soporte y guía de instalación incluidos.</p>
-    <p class="oferta-terminada">La oferta de Black Friday ha finalizado</p>
     <p class="riesgo">El trading conlleva riesgo de pérdida de capital. Los resultados pasados no garantizan resultados futuros. Esto no es asesoría financiera.</p>
   </div>
 </section>
@@ -587,7 +574,6 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
       <p class="nota">Los 2 sistemas juntos. <b>Ahorras $693.</b> Solo por Black Friday.</p>
 
       <a class="btn-bf btn-compra js-compra" href="https://wa.me/593998950621?text=Hola%2C%20vengo%20de%20TikTok%20y%20quiero%20la%20promo%20de%20Black%20Friday%3A%20BOSS%20STAR%201%20%2B%20BOSS%20LADDER%20por%20%24247" target="_blank" rel="noopener">APROVECHAR LA PROMO</a>
-      <p class="oferta-terminada">La oferta de Black Friday ha finalizado</p>
       <p class="riesgo">El trading conlleva riesgo de pérdida de capital. Los resultados pasados no garantizan resultados futuros. Esto no es asesoría financiera.</p>
     </div>
   </div>
@@ -721,7 +707,6 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
     <h2>La promo de Black Friday termina pronto</h2>
     <p class="sub">BOSS STAR 1 + BOSS LADDER. Antes <s>$940</s>, hoy <b>$247</b>.</p>
     <a class="btn-bf btn-compra js-compra" href="https://wa.me/593998950621?text=Hola%2C%20vengo%20de%20TikTok%20y%20quiero%20la%20promo%20de%20Black%20Friday%3A%20BOSS%20STAR%201%20%2B%20BOSS%20LADDER%20por%20%24247" target="_blank" rel="noopener">QUIERO LA OFERTA DE $247</a>
-    <p class="oferta-terminada">La oferta de Black Friday ha finalizado</p>
     <p class="riesgo">El trading conlleva riesgo de pérdida de capital. Los resultados pasados no garantizan resultados futuros. Esto no es asesoría financiera.</p>
   </div>
 </section>
@@ -780,10 +765,11 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
     // Agrega un cero a la izquierda
     function dos(n) { return n < 10 ? '0' + n : String(n); }
 
-    // Al llegar a cero: oculta contador y botones de compra y muestra el aviso de fin
+    // Al llegar a cero: el contador se queda en 00:00:00 (sin mensajes de oferta finalizada)
     function finalizar() {
-      document.body.classList.add('bf-finalizada');
+      elHoras.textContent = '00'; elMin.textContent = '00'; elSeg.textContent = '00';
       if (intervalo) clearInterval(intervalo);
+      intervalo = 'detenido';
     }
 
     function actualizar() {
@@ -796,7 +782,7 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
     }
 
     actualizar();
-    if (!document.body.classList.contains('bf-finalizada')) {
+    if (intervalo !== 'detenido') {
       intervalo = setInterval(actualizar, 1000);
     }
   })();
