@@ -310,7 +310,10 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
     padding: 10px 24px; font-size: 13px; letter-spacing: 3px;
     background: linear-gradient(135deg, #B8954D, var(--dorado-claro) 50%, #B8954D);
     box-shadow: 0 0 0 1px rgba(227,201,138,0.5), 0 0 28px rgba(201,169,97,0.45);
+    /* Ahora es un enlace: sin subrayado y con efecto al pasar/tocar */
+    text-decoration: none; cursor: pointer; transition: transform .2s, box-shadow .2s;
   }
+  .insignia:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(227,201,138,0.7), 0 0 40px rgba(201,169,97,0.65); }
   .insignia::after,
   .btn-bf::after {
     content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
@@ -559,7 +562,8 @@ src="https://www.facebook.com/tr?id=836717828837994&ev=PageView&noscript=1"
       <s>$940</s>
       <b>$247</b>
     </div>
-    <div class="insignia">Oferta Black Friday</div>
+    <!-- Insignia clicable: abre WhatsApp y dispara Contact (Meta por .btn-compra, TikTok por el enlace wa.me) -->
+    <a class="insignia btn-compra" href="https://wa.me/593998950621?text=Hola%2C%20vengo%20de%20TikTok%20y%20quiero%20la%20promo%20de%20Black%20Friday%3A%20BOSS%20STAR%201%20%2B%20BOSS%20LADDER%20por%20%24247" target="_blank" rel="noopener">Oferta Black Friday</a>
     <h1>2 sistemas que <em>analizan el oro por ti</em>. Hoy, a un solo precio.</h1>
     <p class="subtitulo"><strong>BOSS STAR 1 + BOSS LADDER</strong> juntos. Antes <s>$940</s> — solo por Black Friday, los dos por <span class="oro">$247</span>.</p>
 
